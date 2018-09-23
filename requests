@@ -1,0 +1,4 @@
+#项目使用到的环境
+1,pip install tushare
+2,pip install pymysql
+3,pip install sklearn
