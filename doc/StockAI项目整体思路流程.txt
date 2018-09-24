@@ -1,0 +1,204 @@
+项目整体思路步骤：
+
+第一步：选股票的code,目前选中的比较优良的股票是 沪深300以及上证500，总共800个股票代码
+
+第二步：根据第一步的股票code获取历史数据存在csv或者数据库中，其中获取的时间区间是 【2004-01-05 2018-06-15】
+
+第三步：手动或者写程序对第二步获取的历史数据根据code分别打标注，标注标注出那个买入点位比较合适，
+后面用来训练的时候，有Y=1，没有标注的数据Y=0
+
+第四步：打标注好数据后，开始根据下面的字典，根据code把近五日的历史数据生成一条记录，维度大概100维，用于做特征工程
+
+第五步：把第四步的数据用来做特征工程
+特征工程的细节
+清洗数据
+
+第六步：模型训练，参数调优
+
+第七步：模型部署，获取实时数据做模拟交易。
+
+
+
+===============字典：======================
+	/**
+	 * 股票的代码
+	 */
+	  code;
+	/**
+	 * 具体的时间日期
+	 */
+	  tradedate;
+	/**
+	 * 【Y值】 是否可以购买
+	 */
+	  resultBuy;
+	/**
+	 * 今日开盘价
+	 */
+	  open1Price;
+	/**
+	 * 今日收盘价
+	 */
+	  closed1Price;
+	/**
+	 * 今日最高价
+	 */
+	  high1Price;
+	/**
+	 * 今日最低价
+	 */
+	  lower1Price;
+	/**
+	 * 跌涨幅度
+	 */
+	  level1;
+	/**
+	 * 跌涨值
+	 */
+	  level1value;
+	/**
+	 * 今日ma5值
+	 */
+	  ma51;
+	/**
+	 * 今日ma10值
+	 */
+	  ma101;
+	/**
+	 * 今日ma20值
+	 */
+	  ma201;
+	/**
+	 * 今日成交量
+	 */
+	  valume1;
+	/**
+	 * 今日换手率
+	 */
+	  change1;
+	/**
+	 * 市盈率
+	 */
+	  marketProfits1;
+	/**
+	 * 公司市值
+	 */
+	  companyMoney1;;
+
+	/**
+	 * ma5是否大于昨日的ma5
+	 */
+	  ma5biger1;
+
+	/**
+	 * ma10是否大于昨日的ma10
+	 */
+	  ma10biger1;
+
+	/**
+	 * ma20是否大于昨日的ma20
+	 */
+	  ma20biger1;
+	/**
+	 * ma5是否大于ma10
+	 */
+	  ma5bigerma10_1;
+	/**
+	 * ma5是否大于ma20
+	 */
+	  ma5bigerma20_1;
+	
+	/**
+	 * 换手率
+	 */
+	  tor1;
+	
+	/**
+	 * vr:量比
+	 */
+	  vr1;
+	// ====昨日数据===
+	  open2Price;
+	  closed2Price;
+	  high2Price;
+	  lower2Price;
+	  level2;
+	  level2value;
+	  ma52;
+	  ma102;
+	  ma202;
+	  valume2;
+	  change2;
+	  marketProfits2;
+	  companyMoney2;;
+	  ma5biger2;
+	  ma10biger2;
+	  ma20biger2;
+	  ma5bigerma10_2;
+	  ma5bigerma20_2;
+	  tor2;
+	  vr2;
+
+	// ======前日数据===
+	  open3Price;
+	  closed3Price;
+	  high3Price;
+	  lower3Price;
+	  level3;
+	  level3value;
+	  ma53;
+	  ma103;
+	  ma203;
+	  valume3;
+	  change3;
+	  marketProfits3;
+	  companyMoney3;
+	  ma5biger3;
+	  ma10biger3;
+	  ma20biger3;
+	  ma5bigerma10_3;
+	  ma5bigerma20_3;
+	  tor3;
+	  vr3;
+	// ==大前日的数据===
+	  open4Price;
+	  closed4Price;
+	  high4Price;
+	  lower4Price;
+	  level4;
+	  level4value;
+	  ma54;
+	  ma104;
+	  ma204;
+	  valume4;
+	  change4;
+	  marketProfits4;
+	  companyMoney4;
+	  ma5biger4;
+	  ma10biger4;
+	  ma20biger4;
+	  ma5bigerma10_4;
+	  ma5bigerma20_4;
+	  tor4;
+	  vr4;
+	// =前五日的数据=====
+	  open5Price;
+	  closed5Price;
+	  high5Price;
+	  lower5Price;
+	  level5;
+	  level5value;
+	  ma55;
+	  ma105;
+	  ma205;
+	  valume5;
+	  change5;
+	  marketProfits5;
+	  companyMoney5;
+	  ma5biger5;
+	  ma10biger5;
+	  ma20biger5;
+	  ma5bigerma10_5;
+	  ma5bigerma20_5;
+	  tor5;
+	  vr5;
